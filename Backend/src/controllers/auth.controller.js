@@ -15,7 +15,7 @@ async function registerUser(req, res) {
     const user= await userModel.create({username,email, password})
     const token= jwt.sign({
         id: user._id
-    },"")
+    },process.env.JWT_SECRET_KEY)
 
     res.cookie("token",token)
 
